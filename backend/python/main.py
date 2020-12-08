@@ -1,5 +1,5 @@
 from map import map
-from case_type import case_type
+from backend.case_type import case_type
 from controleur import controleur
 import random
 
