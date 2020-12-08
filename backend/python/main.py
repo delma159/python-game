@@ -106,3 +106,4 @@ def start_game():
 
 if __name__ == "__main__":
     init()
+#dodie est un chien de la casse
