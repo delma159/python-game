@@ -1,4 +1,4 @@
-class map:
+class Map:
 
 
     def __init__(self,largeur, longeur, totalCase, mode):

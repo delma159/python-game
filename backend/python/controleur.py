@@ -1,6 +1,4 @@
 
-
-
 class controleur:
 
     def __init__(self,dpc_haut,dpc_bas,dpc_droit,dpc_gauche):
