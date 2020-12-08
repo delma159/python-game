@@ -1,5 +1,5 @@
 from map import map
-from backend.python.case_type import case_type
+from case_type import case_type
 from controleur import controleur
 import random
 
@@ -90,7 +90,7 @@ def start_game():
                     print(liste_map[cpt])
                     cpt += 1
             if msg == "q":
-                liste_map[x + 1 ][y] = contenue_case[3]
+                liste_map[x][y - 1] = contenue_case[3]
                 liste_map[x][y] = contenue_case[1]
 
 
@@ -106,4 +106,3 @@ def start_game():
 
 if __name__ == "__main__":
     init()
-#dodie est un chien de la casse
