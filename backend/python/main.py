@@ -4,12 +4,8 @@ from controleur import controleur
 import random
 
 
-# from time import sleep
-
-
 def init():
     start_game()
-
 
 # class map
 largeur = int(input("entrez ici la largeur souhaitez pour la map (valeur min=5 et max=10): "))
@@ -25,15 +21,21 @@ map = map(largeur, longeur, total_case, {1: 'normal'})
 case = case_type(x, y, contenue_case, type_case=0)
 
 # class controleur
-
 haut = "z"
 bas = "s"
 droite = "d"
 gauche = "q"
 deplacement = controleur(haut, bas, droite, gauche)
 
-
+"""
+fonction lancement du jeu
+"""
 def start_game():
+    """
+    declaration de la grille
+    :return:
+    """
+
     liste_ligne1 = []
     liste_ligne2 = []
     liste_ligne3 = []
@@ -73,28 +75,77 @@ def start_game():
         print(liste_map[cpt])
         cpt += 1
 
+    """
+    programme demandant le deplacement jusqu'a 
+    """
+
+    while True:
+        x = -1
+        y = liste_map[x].index(contenue_case[3])
+
+        for e in liste_map[x]:
+
+            if liste_map[x][y] == contenue_case[3]:
 
 
-    x = -1
-    y = 0
-    for e in liste_map:
-        x += 1
-    for e in liste_map[x]:
-        if liste_map[x][y] == contenue_case[3]:
-            msg = input("introduisez votre commande : ")
-            if msg == "z":
-                liste_map[x - 1][y] = contenue_case[3]
-                liste_map[x][y] = contenue_case[1]
-                cpt = 0
-                for e in liste_map:
-                    print(liste_map[cpt])
-                    cpt += 1
-            if msg == "q":
-                liste_map[x][y - 1] = contenue_case[3]
-                liste_map[x][y] = contenue_case[1]
+                msg = input("introduisez votre commande : ")
+                if msg == "z":
+                    if liste_map[x -1][y] == contenue_case[4]:
+                        print("bravo tu as sauvé la princess! ")
+                        return False
+
+                    if liste_map[x - 1][y] == contenue_case[2]:
+                        print("Tu es rentré dans un obstacle tu es mort ! ")
+                        return False
+
+                    liste_map[x - 1][y] = contenue_case[3]
+                    liste_map[x][y] = contenue_case[1]
+                    cpt = 0
+                    x -= 1
 
 
-        y += 1
+                    print(x, y)
+                    for e in liste_map:
+                        print(liste_map[cpt])
+                        cpt += 1
+
+                if msg == "q":
+                    if liste_map[x][y - 1] == contenue_case[4]:
+                        print("bravo ! ")
+                        return False
+                    liste_map[x][y - 1] = contenue_case[3]
+                    liste_map[x][y] = contenue_case[1]
+                    cpt = 0
+                    y -= 1
+
+                    for e in liste_map:
+                        print(liste_map[cpt])
+                        cpt += 1
+
+                if msg == "d":
+                    if liste_map[x][y + 1] == contenue_case[4]:
+                        print("bravo ! ")
+                        return False
+                    liste_map[x][y + 1] = contenue_case[3]
+                    liste_map[x][y] = contenue_case[1]
+                    cpt = 0
+                    y += 1
+
+                    for e in liste_map:
+                        print(liste_map[cpt])
+                        cpt += 1
+
+                if msg == "s":
+                    liste_map[x + 1][y] = contenue_case[3]
+                    liste_map[x][y] = contenue_case[1]
+                    cpt = 0
+                    x += 1
+
+                    for e in liste_map:
+                        print(liste_map[cpt])
+                        cpt += 1
+
+
 
 
 
