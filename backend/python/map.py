@@ -135,7 +135,7 @@ class Controleur:
             b = 1
 
         elif msg == "s":
-            a = 1
+            a = -1
             b = 0
 
         elif msg == "d":
