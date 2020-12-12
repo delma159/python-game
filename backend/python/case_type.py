@@ -1,10 +1,14 @@
-class case_type:
 
-    def __init__(self, x, y, contenue_case, type_case):
+class CaseType:
+
+
+    def __init__(self,x = 0,y = 0):
         self.x = x
         self.y = y
-        self.contenue_case = contenue_case
-        self.type_case = type_case
+        self.contenue_case = {1: " . ", 2: " / ", 3: " X ", 4: " * "}
+        self.type_case = 1
+
+
 
     @property
     def get_x(self):
@@ -18,7 +22,6 @@ class case_type:
     def get_type_case(self):
         return self.type_case
 
-
 """  @get_x.setter
     def x(self,x):
         self.x = x
@@ -28,5 +31,6 @@ class case_type:
     def x(self, y):
         self.x = y
         return y
-
+        
 """
+
