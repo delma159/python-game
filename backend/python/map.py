@@ -149,13 +149,14 @@ class Controleur:
             print("bravo tu as sauvé la princess! ")
             return False
 
-        if self.map[x - a][y - b] == Case.contenue_case[2]:
+        elif self.map[x - a][y - b] == Case.contenue_case[2]:
             print("Tu es rentré dans un obstacle tu es mort ! ")
             return False
 
-        self.map[x - a][y - b] = Case.contenue_case[3]
-        self.map[x][y] = Case.contenue_case[1]
-
+        else:
+            self.map[x - a][y - b] = Case.contenue_case[3]
+            self.map[x][y] = Case.contenue_case[1]
+            return True
 
 
         """while True:
