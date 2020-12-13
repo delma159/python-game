@@ -1,5 +1,5 @@
-from map import MapPrincess
-from map import Controleur
+from map import MapPrincess, Controleur
+from items import Items
 
 
 def init():
@@ -8,16 +8,15 @@ def init():
 
 
 def start_game():
-    Map = MapPrincess()
-    """    
-    Map.generate_map()
-    """
 
+    Map = MapPrincess(0,0)
+    item = Items()
     game = Controleur(liste_map=Map.generate_map())
+
+    item.generate_items()
     game.deplacement()
     game.affichage_map()
 
 
 if __name__ == "__main__":
     init()
-
