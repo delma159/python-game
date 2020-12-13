@@ -2,12 +2,11 @@ import random
 from case_type import CaseType
 
 
-
 class MapPrincess:
 
-    def __init__(self, mode=1):
-        self.largeur = 0
-        self.longeur = 0
+    def __init__(self,largeur, longeur, mode=1):
+        self.largeur = largeur
+        self.longeur = longeur
         self.totalCase = 0
         self.mode = mode
         self.listeMap = []
@@ -32,31 +31,55 @@ class MapPrincess:
         return self.mode
 
 
-
-
     def generate_map(self):
 
-        largeur = int(input("entrez ici la largeur souhaitez pour la map (valeur min=5 et max=10): "))
-        longeur = int(input("entrez ici la longeur souhaitez pour la map (valeur min=5 et max=10): "))
-        total_case = largeur * longeur
-        Case = CaseType()
+        if self.largeur == 0:
+            try:
+                largeur = int(input("entrez ici la largeur souhaitez pour la map (valeur min=5 et max=10): "))
+                self.largeur = largeur
+            except ValueError:
+                print("Ceci n'est pas un nombre entre 5 et 10 ;)")
 
+        if self.longeur == 0:
+            try:
+                longeur = int(input("entrez ici la longeur souhaitez pour la map (valeur min=5 et max=10): "))
+                self.longeur = longeur
 
-        cpt = 0
-        for e in range(largeur):
-            self.listeMap.append([])
-            while len(self.listeMap[cpt]) != (longeur-1):
-                self.listeMap[cpt].append(Case.contenue_case[1])
-            cpt += 1
+            except ValueError:
+                print("Ceci n'est pas un nombre entre 5 et 10 ;)")
 
+        if not self.largeur and not self.longeur == int:
+            print("Ceci n'est pas un nombre entre 5 et 10 ;)")
+            self.largeur = 0
+            self.longeur = 0
+            self.generate_map()
+        if self.largeur < 4 or self.largeur > 11:
+            print("Ceci n'est pas un nombre entre 5 et 10 ;)")
+            self.largeur = 0
+            self.longeur = 0
+            self.generate_map()
+        if self.longeur < 4 or self.longeur > 11:
+            print("Ceci n'est pas un nombre entre 5 et 10 ;)")
+            self.largeur = 0
+            self.longeur = 0
+            self.generate_map()
+        else:
 
-        self.listeMap[0][1] = Case.contenue_case[4]
-        self.listeMap[-1][1] = Case.contenue_case[3]
-        compteur=0
-        for e in self.listeMap:
-            self.listeMap[compteur].append(Case.contenue_case[2])
-            random.shuffle(self.listeMap[compteur])
-            compteur += 1
+            Case = CaseType()
+            cpt = 0
+            for e in range(self.largeur):
+                self.listeMap.append([])
+                while len(self.listeMap[cpt]) != (self.longeur-1):
+                    self.listeMap[cpt].append(Case.contenue_case[1])
+                cpt += 1
+
+            self.listeMap[0][1] = Case.contenue_case[4]
+            self.listeMap[-1][1] = Case.contenue_case[3]
+            compteur=0
+            for e in self.listeMap:
+                self.listeMap[compteur].append(Case.contenue_case[2])
+                random.shuffle(self.listeMap[compteur])
+                compteur += 1
 
 
         return self.listeMap
@@ -115,7 +138,7 @@ class Controleur:
                         y = i
 
             self.affichage_map()
-            msg = input("introduisez votre commande : ")
+            msg = input("introduisez votre deplacement (z, q, s, d): ")
 
 
             if not self.move(msg,x,y):
@@ -138,6 +161,7 @@ class Controleur:
             a = -1
             b = 0
 
+
         elif msg == "d":
             a = 0
             b = -1
@@ -145,17 +169,25 @@ class Controleur:
         else:
             print("error try again")
 
+
         if self.map[x - a][y - b] == Case.contenue_case[4]:
             print("bravo tu as sauvé la princess! ")
             return False
 
+
+
         elif self.map[x - a][y - b] == Case.contenue_case[2]:
-            print("Tu es rentré dans un obstacle tu es mort ! ")
+            print("Tu es rentré dans un obstacle, tu es mort ! ")
             return False
 
         else:
+
+            if self.map[x][y] == self.map[-1][y]:
+                print("attention ne tombe pas dans le vide")
+
             self.map[x - a][y - b] = Case.contenue_case[3]
             self.map[x][y] = Case.contenue_case[1]
+
             return True
 
 
