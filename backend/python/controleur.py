@@ -15,10 +15,10 @@ class Player(pygame.sprite.Sprite):
         self.rect.y = 950
 
 
-    def move_right(self):
-    if not self.game.check_collision(self, self.game.all_obstacle):
-        self.rect.x += self.vitesse
-        print("tu es mort")
+       def move_right(self):
+        if not self.game.check_collision(self, self.game.all_obstacle):
+            self.rect.x += self.vitesse
+            print("tu es mort")
 
 
     def move_left(self):
