@@ -69,8 +69,12 @@ class Player(pygame.sprite.Sprite):
     """
 
     def damage(self, degat):
-        if self.vie - degat > degat:
-            self.vie -= degat
+        try:
+            if self.vie - degat > degat:
+                self.vie -= degat
 
-        else:
-            self.game.game_over()
+            else:
+                self.game.game_over()
+
+        except TypeError:
+            print("only int")
