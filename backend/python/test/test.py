@@ -16,3 +16,6 @@ import unittest
     def test_move(self):
         Map = MapPrincess(0, 0)
         self.assert
+
+if __name__ == '__main__':
+    unittest.main()
