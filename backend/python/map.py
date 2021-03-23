@@ -445,48 +445,7 @@ class Controleur:
             return True
 
 
-        while True:
-            msg = input("introduisez votre commande : ")
-            if msg == "z":
-                if self.map[x - 1][y] == Case.contenue_case[4]:
-                    print("bravo tu as sauvé la princess! ")
-                    return False
 
-                if self.map[x - 1][y] == Case.contenue_case[2]:
-                    print("Tu es rentré dans un obstacle tu es mort ! ")
-                    return False
-
-                self.map[x - 1][y] = Case.contenue_case[3]
-                self.map[x][y] = Case.contenue_case[1]
-                x -= 1
-
-
-    
-
-            if msg == "q":
-                if self.map[x][y - 1] == Case.contenue_case[4]:
-                    print("bravo ! ")
-                    return False
-                self.map[x][y - 1] = Case.contenue_case[3]
-                self.map[x][y] = Case.contenue_case[1]
-                y -= 1
-
-
-
-            if msg == "d":
-                if self.map[x][y + 1] == Case.contenue_case[4]:
-                    print("bravo ! ")
-                    return False
-                self.map[x][y + 1] = Case.contenue_case[3]
-                self.map[x][y] = Case.contenue_case[1]
-                y += 1
-
-
-
-            if msg == "s":
-                self.map[x + 1][y] = Case.contenue_case[3]
-                self.map[x][y] = Case.contenue_case[1]
-                x += 1
                 
  """
 
