@@ -445,7 +445,7 @@ class Controleur:
             return True
 
 
-        """while True:
+        while True:
             msg = input("introduisez votre commande : ")
             if msg == "z":
                 if self.map[x - 1][y] == Case.contenue_case[4]:
@@ -486,7 +486,9 @@ class Controleur:
             if msg == "s":
                 self.map[x + 1][y] = Case.contenue_case[3]
                 self.map[x][y] = Case.contenue_case[1]
-                x += 1"""
+                x += 1
+                
+ """
 
 
 
