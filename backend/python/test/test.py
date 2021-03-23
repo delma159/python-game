@@ -27,4 +27,5 @@ class test(unittest.Testcase):
         self.assertFalse(self.MapPrincess.listeMap)
 
 if __name__ == '__main__':
+    unittest.main()
     
