@@ -1,6 +1,7 @@
 import sys
 sys.path.append("..")
 from src.map import MapPrincess
+from user import User
 import unittest
 
 class test(unittest.Testcase):
